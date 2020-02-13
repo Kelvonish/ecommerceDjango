@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v1 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ {% load static %}
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'log/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'log/css/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper" id="wrapper">
+			<style>
+				#wrapper{
+				background-image: url("{% static 'log/images/bg-registration-form-1.jpg' %}")
+				}
+
+			</style>
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'log/images/registration-form-1.jpg' %}" alt="">
+				</div>
+				<form action="" method="POST"> {% csrf_token %}
+					<div class="alert alert-{{messages.tag}}">
+						{% for message in messages %}
+						{{message}}
+						{%endfor%}
+					</div>
+					<h3>Login Form</h3>
+					<div class="form-wrapper">
+            {% for field in form %}
+           <div class="input-group">
+             <p><label for="" class="mr-3">{{field.name}}:</label></p>
+              <div> <input class="form-control"  name="{{ field.html_name }}" value="" type="{{field.name}}" /></div>
+               {{ field.errors }}
+           </div>
+       {% endfor %}
+
+					</div>
+
+
+
+					<input type="submit" value=" Login" class="btn btn-primary btn-block"
+					class="zmdi zmdi-arrow-right" >
+
+				</form>
+			</div>
+		</div>
+
+	</body>
+</html>
